@@ -5,14 +5,13 @@ import 'firebase/auth'
 import { Button, Grid } from '@material-ui/core'
 
 const config = {
-  apiKey: 'AIzaSyDwojIWCv5Sj6ARbNxXmnmYbWX-FQpBBL8',
-  authDomain: 'reactzzaria-af092.firebaseapp.com',
-  databaseURL: 'https://reactzzaria-af092.firebaseio.com',
-  projectId: 'reactzzaria-af092',
-  storageBucket: 'reactzzaria-af092.appspot.com',
-  messagingSenderId: '589648798408'
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  databaseURL: process.env.REACT_APP_DATABASE_URL,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID
 }
-
 firebase.initializeApp(config)
 
 class Login extends Component {
@@ -38,7 +37,6 @@ class Login extends Component {
 
   logout = () => {
     firebase.auth().signOut().then(() => {
-      console.log('deslogou')
       this.setState({
         isUserLoggedIn: false,
         user: null
